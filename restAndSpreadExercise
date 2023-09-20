@@ -1,0 +1,100 @@
+function filterOutOdds() {
+    var nums = Array.prototype.slice.call(arguments);
+    return nums.filter(function(num) {
+      return num % 2 === 0
+    });
+  }
+
+  // refactored using rest operator and arrow function
+
+  const filterOutOddsRefactor = (...values) => {
+   return values.filter( num => num % 2 === 0 )
+  }
+
+//   console.log(filterOutOddsRefactor(1,2,3,4,5,6))
+
+  // Write a function called findMin that accepts a variable number of arguments and returns the smallest argument. Make sure to do this using the rest and spread operator.
+
+  const findMin = (...values) => {
+    return values.reduce((min, currVal) => {
+        return currVal < min ? currVal : min
+    })
+  }
+
+//   console.log(findMin(6,1,2,))
+
+  // Write a function called mergeObjects that accepts two objects and returns a new object which contains all the keys and values of the first object and second object.
+
+  const mergeObjects = (obj1, obj2) => {
+    return {...obj1, ...obj2}
+  }
+
+//   console.log(mergeObjects({a:1, b:2}, {c:3, d:4}))
+
+  // Write a function called doubleAndReturnArgs which accepts an array and a variable number of arguments. The function should return a new array with the original array values and all of additional arguments doubled.
+
+  const doubleAndReturnArgs = (arr, ...args) => {
+    return [...arr, ...args.map(val => val *2)]
+  }
+
+//   console.log(doubleAndReturnArgs([1,2,3],4,4))
+
+  /** remove a random element in the items array
+and return a new array without that item. */
+
+const removeRandomRefactor = (arr) => {
+    const randomElement = Math.floor(Math.random() * arr.length)
+    const newArr = [...arr]
+    newArr.splice(randomElement, 1)
+    return newArr
+}
+
+// console.log(removeRandomRefactor([1,2,3,4]))
+
+/** Return a new array with every item in array1 and array2. */
+
+const extend = (array1, array2) => {
+    return [...array1, ...array2]
+}
+
+// console.log(extend([1,2,3], [4,5,6]))
+
+/** Return a new object with all the keys and values
+from obj and a new key/value pair */
+
+const addKeyVal = (obj, key, val) => {
+    const newObj = {...obj, [key]: val}
+    return newObj
+}
+
+const tea = {type: 'oolong', name: 'wintersprout', origin: 'taiwan'}
+
+// console.log(addKeyVal(tea, 'price', 6.99))
+
+/** Return a new object with a key removed. */
+
+const removeKey = (obj, key) => {
+    const newObj = {...obj}
+    delete newObj[key]
+    return newObj
+}
+
+// console.log(removeKey(tea, 'type'))
+
+/** Combine two objects and return a new object. */
+
+const combine = (obj1, obj2) => {
+    const newObj = {...obj1, ...obj2}
+    return newObj
+}
+
+const teaData = {steepTime: '30s', brewTemp : 175}
+
+// console.log(combine(tea, teaData))
+/** Return a new object with a modified key and value. */
+
+const update = (obj, key, val) => {
+    const newObj = {...obj}
+    newObj[key] = val
+    return newObj
+}
